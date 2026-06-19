@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowRight, Sparkles, Zap, Trophy, Flame, Crown, Clock, ChevronRight } from 'lucide-react'
-import { TRACKS, LEADERBOARD, getLevelFromXP, getXPToNextLevel, LEVEL_TITLES } from '../utils/constants'
+import { ArrowRight, Sparkles, Zap, Trophy, Flame, Clock, ChevronRight } from 'lucide-react'
+import { TRACKS, getLevelFromXP, getXPToNextLevel, LEVEL_TITLES } from '../utils/constants'
 import { useStore } from '../store'
 import { ReactLogo } from '../components/layout/ReactLogo'
 import { ProgressRing } from '../components/shared/ProgressRing'
@@ -107,32 +107,6 @@ function TrackGrid() {
   )
 }
 
-function Leaderboard() {
-  const { xp, level } = useStore()
-  const all = [...LEADERBOARD, { name: 'You', xp, level, avatar: '★', color: '#61dafb' }].sort((a, b) => b.xp - a.xp).slice(0, 6)
-  return (
-    <section className="max-w-7xl mx-auto px-6 pb-16">
-      <div className="card rounded-2xl p-5">
-        <div className="flex items-center gap-2 mb-4"><Crown size={14} className="text-purple" /><span className="text-xs font-semibold text-purple uppercase tracking-wider">Leaderboard</span></div>
-        <div className="flex flex-col gap-2">
-          {all.map((p, i) => {
-            const me = p.name === 'You'
-            return (
-              <div key={p.name} className="flex items-center gap-3 px-3 py-2.5 rounded-xl" style={{ background: me ? `${p.color}12` : 'rgba(255,255,255,0.03)', border: me ? `1px solid ${p.color}30` : '1px solid transparent' }}>
-                <span className="w-5 text-center text-xs font-bold">{i < 3 ? ['🥇', '🥈', '🥉'][i] : i + 1}</span>
-                <div className="w-7 h-7 rounded-lg flex items-center justify-center text-sm font-bold" style={{ background: `${p.color}20`, color: p.color }}>{p.avatar}</div>
-                <span className="flex-1 text-sm font-medium truncate">{p.name}</span>
-                <span className="flex items-center gap-1 text-xs font-semibold" style={{ color: p.color }}><Zap size={10} /> {p.xp.toLocaleString()}</span>
-                <span className="text-xs text-white/30 font-mono w-12 text-right">Lv.{p.level}</span>
-              </div>
-            )
-          })}
-        </div>
-      </div>
-    </section>
-  )
-}
-
 export function Home() {
-  return <div><Hero /><XPSection /><TrackGrid /><Leaderboard /></div>
+  return <div><Hero /><XPSection /><TrackGrid /></div>
 }

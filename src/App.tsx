@@ -9,6 +9,7 @@ import { Internals } from './pages/Internals'
 import { TypeScriptTrack } from './pages/TypeScript'
 import { NextjsTrack } from './pages/Nextjs'
 import { Puzzles } from './pages/Puzzles'
+import { Interview } from './pages/Interview'
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="/typescript" element={<TypeScriptTrack />} />
           <Route path="/nextjs" element={<NextjsTrack />} />
           <Route path="/puzzles" element={<Puzzles />} />
+          <Route path="/interview" element={<Interview />} />
         </Routes>
       </Layout>
     </BrowserRouter>

@@ -44,6 +44,7 @@ export function Navbar() {
             </div>
             <span className="text-[10px] text-white/40">Lv.{level} {title}</span>
           </Link>
+          <Link to="/interview" className="btn-ghost text-xs hidden md:block">Interview</Link>
           <Link to="/puzzles" className="btn-ghost text-xs hidden md:block">Puzzles</Link>
           <button className="lg:hidden p-1.5 rounded-lg hover:bg-white/10" onClick={() => setOpen(v => !v)}>{open ? <X size={16} /> : <Menu size={16} />}</button>
         </div>
@@ -56,6 +57,7 @@ export function Navbar() {
               {TRACKS.map(t => (
                 <Link key={t.path} to={t.path} onClick={() => setOpen(false)} className="px-4 py-2.5 rounded-xl text-sm font-medium" style={{ color: loc.pathname === t.path ? t.color : 'rgba(255,255,255,0.6)', background: loc.pathname === t.path ? `${t.color}10` : 'transparent' }}>{t.name}</Link>
               ))}
+              <Link to="/interview" onClick={() => setOpen(false)} className="px-4 py-2.5 rounded-xl text-sm font-medium text-white/60">Interview Prep</Link>
               <Link to="/puzzles" onClick={() => setOpen(false)} className="px-4 py-2.5 rounded-xl text-sm font-medium text-white/60">Puzzles</Link>
             </nav>
           </motion.div>
